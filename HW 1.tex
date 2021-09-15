@@ -88,11 +88,55 @@
             = M\llbracket\phi\rrbracket
         \]
         Ч.т.д.
+    \item
+        Докажем \(\models \phi \lor \neg \phi\).
+        \[
+            M\llbracket \phi \lor \neg \phi \rrbracket
+            = MAX(M\llbracket \phi \rrbracket, 1 - M\llbracket \phi \rrbracket)
+        \]
+        Получаем, что мы выбираем максимум из 1 и 0 независимо от интерпретации формулы. 
+        Т.е. выражение \(\phi \lor \neg \phi\) общезначимо. Ч.т.д.
+    \item
+        Докажем 
 \end{enumerate}
 
 \section*{Задание 3}
 
 \section*{Задание 4}
+Приведём формулу \(\neg(\neg(p \land q) \rightarrow \neg r)\) в КНФ и ДНФ.
+
+Построим таблицу истинности.
+
+\begin{tabular}[b]{ | l | l | l | l | l | l | l | l |}
+    \hline
+    p & q & r & \(p \land r\) & \(\neg(p \land r)\) & \(\neg r\) & \(\neg(p \land q) \rightarrow \neg r\) & \(\neg(\neg(p \land q) \rightarrow \neg r)\) \\ \hline
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 \\ \hline
+    0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+    0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 \\ \hline
+
+    0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+    1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 \\ \hline
+    1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+
+    1 & 1 & 0 & 1 & 0 & 1 & 1 & 0 \\ \hline
+    1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 \\
+    \hline
+\end{tabular}
+
+ДНФ: \(
+    (\neg p \neg q r) 
+    \lor (\neg p q r) 
+    \lor (p \neg q r)
+\)
+
+КНФ: \(
+    (p \lor q \lor r) 
+    \land (p \lor \neg q \lor r) 
+    \land (\neg p \lor q \lor r) 
+    \land (\neg p \lor \neg q \lor r) 
+    \land (\neg p \lor \neg q \lor \neg r)
+\)
+
 
 \section*{Задание 5}
 
