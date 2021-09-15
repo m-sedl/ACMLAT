@@ -17,71 +17,71 @@
 \section*{Задание 1}
 \begin{enumerate}
     \item
-          Доказать, что \(\models \phi \rightarrow \psi\) тогда и только тогда, когда \(\phi \models{\psi}\).
+        Доказать, что \(\models \phi \rightarrow \psi\) тогда и только тогда, когда \(\phi \models{\psi}\).
 
-          По определению \(\phi \rightarrow \psi\) -- краткая запись \(\neg \phi \lor \psi\).
-          Если \(\phi \models{\psi}\), тогда если \(M_i\llbracket \phi \rrbracket = 1\), то и \(M_i\llbracket \psi \rrbracket = 1\).
+        По определению \(\phi \rightarrow \psi\) -- краткая запись \(\neg \phi \lor \psi\).
+        Если \(\phi \models{\psi}\), тогда если \(M_i\llbracket \phi \rrbracket = 1\), то и \(M_i\llbracket \psi \rrbracket = 1\).
 
-          Рассмотрим два случая.
-          \begin{enumerate}
-              \item
-                    \(M_i\llbracket \phi \rrbracket = 0\).
-                    Получаем \(M_i\llbracket \neg 0 \lor \psi \rrbracket = MAX(1, M_i\llbracket \psi \rrbracket) = 1\)
-              \item
-                    \(M_i\llbracket \phi \rrbracket = 1\).
-                    Тогда получаем \(M_i\llbracket \neg 1 \lor \psi \rrbracket = MAX(0, M_i\llbracket \psi \rrbracket) = MAX(0, 1) = 1\)
-          \end{enumerate}
+        Рассмотрим два случая.
+        \begin{enumerate}
+            \item
+                \(M_i\llbracket \phi \rrbracket = 0\).
+                Получаем \(M_i\llbracket \neg 0 \lor \psi \rrbracket = MAX(1, M_i\llbracket \psi \rrbracket) = 1\)
+            \item
+                \(M_i\llbracket \phi \rrbracket = 1\).
+                Тогда получаем \(M_i\llbracket \neg 1 \lor \psi \rrbracket = MAX(0, M_i\llbracket \psi \rrbracket) = MAX(0, 1) = 1\)
+        \end{enumerate}
 
-          Во второй интерпретации формула будет выполняться только при условии \(\phi \models \psi\), ч.т.д.
+        Во второй интерпретации формула будет выполняться только при условии \(\phi \models \psi\), ч.т.д.
     \item
-          Доказать, что \(\models \phi \leftrightarrow \psi\) тогда и только тогда, когда \(\phi \sim \psi\).
+        Доказать, что \(\models \phi \leftrightarrow \psi\) тогда и только тогда, когда \(\phi \sim \psi\).
 
-          По определению \(\phi \leftrightarrow \psi\) -- краткая запись \((\phi \land \psi) \lor (\neg \phi \land \neg \psi)\).
-          Если \(\phi \sim \psi\), тогда если \(M_i\llbracket \phi \rrbracket = 1\),
-          то \(
-          M_i\llbracket \psi \rrbracket = 1\) и если
-          \(M_j\llbracket \psi \rrbracket = 1\), то
-          \(M_j\llbracket \phi \rrbracket = 1
-          \)
+        По определению \(\phi \leftrightarrow \psi\) -- краткая запись \((\phi \land \psi) \lor (\neg \phi \land \neg \psi)\).
+        Если \(\phi \sim \psi\), тогда если \(M_i\llbracket \phi \rrbracket = 1\),
+        то \(
+        M_i\llbracket \psi \rrbracket = 1\) и если
+        \(M_j\llbracket \psi \rrbracket = 1\), то
+        \(M_j\llbracket \phi \rrbracket = 1
+        \)
 
-          Рассмотрим два случая.
-          \begin{enumerate}
-              \item
-                    \(M_i\llbracket \phi \rrbracket = 0\). Получаем:
-                    \[
-                        M_i\llbracket (\phi \land \psi) \lor (\neg \phi \land \neg \psi) \rrbracket
-                        = MAX(MIN(0, M_i\llbracket\psi\rrbracket), MIN(1, 1))
-                        = MAX(0, 1)
-                        = 1
-                    \]
-                    Мы принимаем \(M_i\llbracket\neg\psi\rrbracket\) равным 1 т.к. если бы \(M_i\llbracket\psi\rrbracket = 1\), то и \(M_i\llbracket\phi\rrbracket = 1\), что противоречит условию рассматриваемого случая.
-              \item
-                    \(M_i\llbracket \phi \rrbracket = 1\). Получаем:
-                    \[
-                        M_i\llbracket (\phi \land \psi) \lor (\neg \phi \land \neg \psi) \rrbracket
-                        = MAX(MIN(1, 1), MIN(0, 0))
-                        = MAX(1, 0)
-                        = 1
-                    \]
-          \end{enumerate}
+        Рассмотрим два случая.
+        \begin{enumerate}
+            \item
+                \(M_i\llbracket \phi \rrbracket = 0\). Получаем:
+                \[
+                    M_i\llbracket (\phi \land \psi) \lor (\neg \phi \land \neg \psi) \rrbracket
+                    = MAX(MIN(0, M_i\llbracket\psi\rrbracket), MIN(1, 1))
+                    = MAX(0, 1)
+                    = 1
+                \]
+                Мы принимаем \(M_i\llbracket\neg\psi\rrbracket\) равным 1 т.к. если бы \(M_i\llbracket\psi\rrbracket = 1\), то и \(M_i\llbracket\phi\rrbracket = 1\), что противоречит условию рассматриваемого случая.
+            \item
+                \(M_i\llbracket \phi \rrbracket = 1\). Получаем:
+                \[
+                    M_i\llbracket (\phi \land \psi) \lor (\neg \phi \land \neg \psi) \rrbracket
+                    = MAX(MIN(1, 1), MIN(0, 0))
+                    = MAX(1, 0)
+                    = 1
+                \]
+        \end{enumerate}
 
-          Первый случай выполняется только при \(\psi \models \phi\).
-          В то время как второй случай выполняется в силу \(\phi \models \psi\).
-          Т.е. оба случая выпонляются тогда и только тогда, когда \(\phi \sim \psi\), ч.т.д.
+        Первый случай выполняется только при \(\psi \models \phi\).
+        В то время как второй случай выполняется в силу \(\phi \models \psi\).
+        Т.е. оба случая выпонляются тогда и только тогда, когда \(\phi \sim \psi\), ч.т.д.
 \end{enumerate}
 
 \section*{Задание 2}
 \begin{enumerate}
     \item
-          Докажем \(\neg \neg \phi \sim \phi\). Данная запись означает, что значения формул \(\neg \neg \phi\) и \(\phi\) совпадают при любой интерпретации т.е. \(M\llbracket \neg \neg \phi\rrbracket = M\llbracket\phi\rrbracket\).
+        Докажем \(\neg \neg \phi \sim \phi\). Данная запись означает, что значения формул \(\neg \neg \phi\) и \(\phi\) совпадают при любой интерпретации т.е. \(M\llbracket \neg \neg \phi\rrbracket = M\llbracket\phi\rrbracket\).
 
-          Упростим левую часть выражения:
-          \[
-              M\llbracket\neg \neg \phi \rrbracket
-              = 1 - M\llbracket \neg \phi \rrbracket
-              = 1 - (1 - M\llbracket\phi\rrbracket)
-              = M\llbracket\phi\rrbracket
-          \]
-          Ч.т.д.
+        Упростим левую часть выражения:
+        \[
+            M\llbracket\neg \neg \phi \rrbracket
+            = 1 - M\llbracket \neg \phi \rrbracket
+            = 1 - (1 - M\llbracket\phi\rrbracket)
+            = M\llbracket\phi\rrbracket
+        \]
+        Ч.т.д.
 \end{enumerate}
 \end{document}
