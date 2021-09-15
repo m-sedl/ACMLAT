@@ -4,6 +4,7 @@
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{amsmath}
 \usepackage{stmaryrd}
+\usepackage{bussproofs}
 
 \title{Доп. главы матлогики. ДЗ 1}
 \author{Седлярский Михаил Андреевич 21.М07-мм}
@@ -84,4 +85,60 @@
         \]
         Ч.т.д.
 \end{enumerate}
+
+\section*{Задание 3}
+
+\section*{Задание 4}
+
+\section*{Задание 5}
+
+\section*{Задание 6}
+
+\section*{Задание 7}
+
+\section*{Задание 8}
+
+\section*{Задание 9}
+Опишем исчисление, в котором выводимыми являются в точности все формулы логики
+высказываний.
+
+Определим алфавит 
+\(\Sigma = \{\top, \bot\}\ \cup\ \{\neg, \lor, \land, (, )\}\ \cup\ \mathcal{V}\)
+и язык
+\(\mathcal{L} = \Sigma^*\), где \(\mathcal{V}\) -- множество переменных.
+
+Множество аксиом \(\mathcal{A\chi} = \{\top, \bot\}\ \cup\ \mathcal{V}\).
+
+Определим правила вывода:
+\begin{enumerate}
+    \item \(\frac{\phi}{(\phi)}\)
+    \item \(\frac{\phi}{\neg \phi}\)
+    \item \(\frac{\phi \ \psi}{\phi \land \psi}\)
+    \item \(\frac{\phi \ \psi}{\phi \lor \psi}\)
+\end{enumerate}
+
+\section*{Задание 10}
+Опровернем множество дизъюнктов методом резолюций.
+\begin{enumerate}
+    \item \(x_1\)
+    \item \(\neg x_1 \lor \neg x_2 \lor x_3\)
+    \item \(x_2 \lor \neg x_4\)
+    \item \(x_4\)
+    \item \(\neg x_5 \lor \neg x_3\)
+    \item \(x_5\)
+\end{enumerate}
+
+\begin{prooftree}
+    \AxiomC{\(\neg x_5 \lor \neg x_3\)}
+    \AxiomC{\(x_5\)}
+    \BinaryInfC{\(\neg x_3\)}
+    \AxiomC{\(\neg x_1 \lor \neg x_2 \lor x_3\)}
+    \BinaryInfC{\(\neg x_1 \lor \neg x_2\)}
+    \AxiomC{\(x_1\)}
+    \BinaryInfC{\(\neg x_2\)}
+    \AxiomC{\(x_2 \lor \neg x_4\)}
+    \BinaryInfC{\(\neg x_4\)}
+    \AxiomC{\(x_4\)}
+    \BinaryInfC{\boxed{}}
+    \end{prooftree}
 \end{document}
