@@ -55,7 +55,9 @@
                     = MAX(0, 1)
                     = 1
                 \]
-                Мы принимаем \(M_i\llbracket\neg\psi\rrbracket\) равным 1 т.к. если бы \(M_i\llbracket\psi\rrbracket = 1\), то и \(M_i\llbracket\phi\rrbracket = 1\), что противоречит условию рассматриваемого случая.
+                Мы принимаем \(M_i\llbracket\neg\psi\rrbracket\) равным 1 т.к. 
+                если бы \(M_i\llbracket\psi\rrbracket = 1\), то и \(M_i\llbracket\phi\rrbracket = 1\), 
+                что противоречит условию рассматриваемого случая.
             \item
                 \(M_i\llbracket \phi \rrbracket = 1\). Получаем:
                 \[
@@ -74,7 +76,9 @@
 \section*{Задание 2}
 \begin{enumerate}
     \item
-        Докажем \(\neg \neg \phi \sim \phi\). Данная запись означает, что значения формул \(\neg \neg \phi\) и \(\phi\) совпадают при любой интерпретации т.е. \(M\llbracket \neg \neg \phi\rrbracket = M\llbracket\phi\rrbracket\).
+        Докажем \(\neg \neg \phi \sim \phi\). Данная запись означает, 
+        что значения формул \(\neg \neg \phi\) и \(\phi\) совпадают при любой интерпретации 
+        т.е. \(M\llbracket \neg \neg \phi\rrbracket = M\llbracket\phi\rrbracket\).
 
         Упростим левую часть выражения:
         \[
@@ -111,10 +115,28 @@
 
 Определим правила вывода:
 \begin{enumerate}
-    \item \(\frac{\phi}{(\phi)}\)
-    \item \(\frac{\phi}{\neg \phi}\)
-    \item \(\frac{\phi \ \psi}{\phi \land \psi}\)
-    \item \(\frac{\phi \ \psi}{\phi \lor \psi}\)
+    \item 
+        \begin{prooftree}
+            \AxiomC{\(\phi\)}
+            \UnaryInfC{\((\phi)\)}
+        \end{prooftree}
+    \item 
+        \begin{prooftree}
+            \AxiomC{\(\phi\)}
+            \UnaryInfC{\(\neg \phi\)}
+        \end{prooftree}
+    \item 
+        \begin{prooftree}
+            \AxiomC{\(\phi\)}
+            \AxiomC{\(\psi\)}
+            \BinaryInfC{\(\phi \land \psi\)}
+        \end{prooftree}
+    \item
+        \begin{prooftree}
+            \AxiomC{\(\phi\)}
+            \AxiomC{\(\psi\)}
+            \BinaryInfC{\(\phi \lor \psi\)}
+        \end{prooftree}
 \end{enumerate}
 
 \section*{Задание 10}
