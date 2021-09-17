@@ -3,6 +3,7 @@
 \usepackage[russian]{babel}
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{stmaryrd}
 \usepackage{bussproofs}
 
@@ -101,6 +102,48 @@
 \end{enumerate}
 
 \section*{Задание 3}
+\begin{enumerate}
+    \item
+        Определим общезначима ли формула \(
+            (p \rightarrow q) 
+            \leftrightarrow (\neg q \rightarrow \neg p)
+        \).
+        Раскроем макрос импликации согласно определению. Получаем: \(
+            (\neg p \lor q) 
+            \leftrightarrow (q \lor \neg p)
+        \). Заметим, что левая часть выражения равна правой с 
+        точностью до перестановки литералов т.к. операция \(\lor\) коммутативна. 
+        Заменим для удобства (\(p \lor q)\) на \(\alpha\).
+        Тогда по определению раскрываем макрос эквивалентности: \(
+            \alpha \leftrightarrow \alpha 
+            = (\alpha \land \alpha) \lor (\neg \alpha \land \neg \alpha)
+        \). Следовательно, \(
+            M\llbracket (\alpha \land \alpha) \lor (\neg \alpha \land \neg \alpha) \rrbracket
+            = MAX(MIN(M\llbracket \alpha \rrbracket, M\llbracket \alpha \rrbracket), MIN(1 - M\llbracket \alpha \rrbracket, 1 - M\llbracket \alpha \rrbracket))
+            = MAX(M\llbracket \alpha \rrbracket, 1 - M\llbracket \alpha \rrbracket) = 1 
+        \). Т.е. исследуемая формула независимо от интерпретации всегда обращается в 1, 
+        что по определению делает её общезначимой, ч.т.д.
+    \item
+        Определим общезначимость формулы \(
+            (p \rightarrow (q \rightarrow r)) 
+            \leftrightarrow (\neg r \rightarrow (\neg q \rightarrow \neg p))
+        \). Раскроем макрос импликации согласно определению. Получаем: \(
+            (\neg p \lor \neg q \lor r) \leftrightarrow (r \lor q \lor \neg p)
+        \). Заменим для удобства (\(\neg p \lor r)\) на \(\alpha\).
+        Получаем: \((\neg q \lor \alpha) \leftrightarrow (q \lor \alpha)\).
+        Можно заметить, что если \(M \llbracket \alpha \rrbracket = 0\), 
+        то выражение не выполнится ни в одной из возможных интерпретаций. Если же 
+        \(M \llbracket \alpha \rrbracket = 1\), то выражение выполнится независимо 
+        от значения \(M \llbracket q \rrbracket\).
+        
+        Подберём соответствующие интерпретации \(M_1\) и \(M_2\), такие что: 
+        \(M_1 \models \phi\) и \(M_2 \nvDash \phi\), где \(\phi\) исходная формула.
+        \[
+            M_1 = [p \mapsto 0, r \mapsto 0, q \mapsto 0]
+            M_2 = [p \mapsto 1, r \mapsto 0, q \mapsto 0]
+        \]
+        Следовательно, исходная формула выполнимая и необщезначимая.
+\end{enumerate}
 
 \section*{Задание 4}
 Приведём формулу \(\neg(\neg(p \land q) \rightarrow \neg r)\) в КНФ и ДНФ.
@@ -137,7 +180,6 @@
     \land (\neg p \lor \neg q \lor \neg r)
 \)
 
-
 \section*{Задание 5}
 
 \section*{Задание 6}
@@ -145,6 +187,10 @@
 \section*{Задание 7}
 
 \section*{Задание 8}
+Т.к. множество возможных выполнимых логических формул является булеаном счётного 
+множества переменных, то по определению оно имеет мощность континуума. 
+Поскольку у каждой выполнимой формулы есть хотя бы одна модель, 
+то множество моделей выполнимых формул тоже имеет мощность континуума.
 
 \section*{Задание 9}
 Опишем исчисление, в котором выводимыми являются в точности все формулы логики
