@@ -98,7 +98,23 @@
         Получаем, что мы выбираем максимум из 1 и 0 независимо от интерпретации формулы. 
         Т.е. выражение \(\phi \lor \neg \phi\) общезначимо. Ч.т.д.
     \item
-        Докажем ...
+        Докажем \(\phi \land (\psi \lor \eta) \sim (\phi \land \psi) \lor (\phi \land \eta)\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \phi \land (\psi \lor \eta) \rrbracket = M \llbracket (\phi \land \psi) \lor (\phi \land \eta) \rrbracket\]
+        Упростим обе части равенства.
+
+        \[
+            M \llbracket \phi \land (\psi \lor \eta) \rrbracket 
+            = MIN(M \llbracket \phi \rrbracket, MAX(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket))
+        \]
+        \[
+            M \llbracket (\phi \land \psi) \lor (\phi \land \eta) \rrbracket
+            = MAX(MIN(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket), MIN(M \llbracket \phi \rrbracket, M \llbracket \eta \rrbracket))
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 0\), обе формулы обращаются в 0, 
+        а при \(M \llbracket \phi \rrbracket = 1\) в \(MAX(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket)\)
+        Следовательно, значения этих формул эквиваленты в любой из интерпретаций, ч.т.д.
+    \item Докажем ...
 \end{enumerate}
 
 \section*{Задание 3}
@@ -138,10 +154,8 @@
         
         Подберём соответствующие интерпретации \(M_1\) и \(M_2\), такие что: 
         \(M_1 \models \phi\) и \(M_2 \nvDash \phi\), где \(\phi\) исходная формула.
-        \[
-            M_1 = [p \mapsto 0, r \mapsto 0, q \mapsto 0]
-            M_2 = [p \mapsto 1, r \mapsto 0, q \mapsto 0]
-        \]
+        \[M_1 = [p \mapsto 0, r \mapsto 0, q \mapsto 0]\]
+        \[M_2 = [p \mapsto 1, r \mapsto 0, q \mapsto 0]\]
         Следовательно, исходная формула выполнимая и необщезначимая.
 \end{enumerate}
 
