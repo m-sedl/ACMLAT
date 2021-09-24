@@ -102,7 +102,6 @@
         Если верно исходное утверждение, то верно и:
         \[M \llbracket \phi \land (\psi \lor \eta) \rrbracket = M \llbracket (\phi \land \psi) \lor (\phi \land \eta) \rrbracket\]
         Упростим обе части равенства.
-
         \[
             M \llbracket \phi \land (\psi \lor \eta) \rrbracket 
             = MIN(M \llbracket \phi \rrbracket, MAX(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket))
@@ -114,7 +113,85 @@
         Заметим, что при \(M \llbracket \phi \rrbracket = 0\), обе формулы обращаются в 0, 
         а при \(M \llbracket \phi \rrbracket = 1\) в \(MAX(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket)\)
         Следовательно, значения этих формул эквиваленты в любой из интерпретаций, ч.т.д.
-    \item Докажем ...
+    \item 
+        Докажем \(\phi \lor (\psi \land \eta) \sim (\phi \lor \psi) \land (\phi \lor \eta)\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \phi \lor (\psi \land \eta) \rrbracket = M \llbracket (\phi \lor \psi) \land (\phi \lor \eta) \rrbracket\]
+        Упростим обе части равенства.
+        \[
+            M \llbracket \phi \lor (\psi \land \eta) \rrbracket 
+            = MAX(M \llbracket \phi \rrbracket, MIN(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket))
+        \]
+        \[
+            M \llbracket (\phi \lor \psi) \land (\phi \lor \eta) \rrbracket
+            = MIN(MAX(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket), MAX(M \llbracket \phi \rrbracket, M \llbracket \eta \rrbracket))
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 1\), обе формулы обращаются в 1, 
+        а при \(M \llbracket \phi \rrbracket = 0\) в \(MIN(M \llbracket \psi \rrbracket, M \llbracket \eta \rrbracket)\)
+        Следовательно, значения этих формул эквиваленты в любой из интерпретаций, ч.т.д.
+    \item
+        Докажем \(\phi \lor (\phi \land \psi) \sim \phi\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \phi \lor (\phi \land \psi) \rrbracket = M \llbracket \phi \rrbracket\]
+        Упростим левую часть равенства.
+        \[
+            M \llbracket \phi \lor (\phi \land \psi) \rrbracket 
+            = MAX(M \llbracket \phi \rrbracket, MIN(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket))
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 1\), формула обращается в 1, 
+        а при \(M \llbracket \phi \rrbracket = 0\) в 0.
+        Следовательно, 
+        \(M \llbracket \phi \lor (\phi \land \psi) \rrbracket 
+        = M \llbracket \phi \rrbracket\), ч.т.д.
+    \item
+        Докажем \(\phi \land (\phi \lor \psi) \sim \phi\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \phi \land (\phi \lor \psi) \rrbracket = M \llbracket \phi \rrbracket\]
+        Упростим левую часть равенства.
+        \[
+            M \llbracket \phi \land (\phi \lor \psi) \rrbracket 
+            = MIN(M \llbracket \phi \rrbracket, MAX(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket))
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 1\), формула обращается в 1, 
+        а при \(M \llbracket \phi \rrbracket = 0\) в 0.
+        Следовательно, 
+        \(M \llbracket \phi \land (\phi \lor \psi) \rrbracket 
+        = M \llbracket \phi \rrbracket\), ч.т.д.
+    \item
+        Докажем \(\neg (\phi \land \psi) \sim \neg \phi \lor \neg \psi\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \neg (\phi \land \psi) \rrbracket 
+        = M \llbracket \neg \phi \lor \neg \psi \rrbracket\]
+        Упростим обе части равенства.
+        \[
+            M \llbracket \neg (\phi \land \psi) \rrbracket 
+            = 1 - MIN(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket)
+        \]
+        \[
+            M \llbracket \neg \phi \lor \neg \psi \rrbracket
+            = MAX(1 - M \llbracket \phi \rrbracket, 1 - M \llbracket \psi \rrbracket)
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 0\), обе формулы обращаются в 1, 
+        а при \(M \llbracket \phi \rrbracket = 1\) в \(1 - M \llbracket \psi \rrbracket\).
+        Следовательно, значения этих формул эквиваленты в любой из интерпретаций, ч.т.д.
+    \item
+        Докажем \(\neg (\phi \lor \psi) \sim \neg \phi \land \neg \psi\).
+        Если верно исходное утверждение, то верно и:
+        \[M \llbracket \neg (\phi \lor \psi) \rrbracket 
+        = M \llbracket \neg \phi \land \neg \psi \rrbracket\]
+        Упростим обе части равенства.
+        \[
+            M \llbracket \neg (\phi \lor \psi) \rrbracket 
+            = 1 - MAX(M \llbracket \phi \rrbracket, M \llbracket \psi \rrbracket)
+        \]
+        \[
+            M \llbracket \neg \phi \land \neg \psi \rrbracket
+            = MIN(1 - M \llbracket \phi \rrbracket, 1 - M \llbracket \psi \rrbracket)
+        \]
+        Заметим, что при \(M \llbracket \phi \rrbracket = 0\), 
+        обе формулы обращаются в \(1 - M \llbracket \psi \rrbracket\), 
+        а при \(M \llbracket \phi \rrbracket = 1\) в 0.
+        Следовательно, значения этих формул эквиваленты в любой из интерпретаций, ч.т.д.
 \end{enumerate}
 
 \section*{Задание 3}
