@@ -265,24 +265,24 @@
 Т.к. расширяя множество positive мы не изменяем истинности существующего литерала.
 
 Переход: допустим, что: 
-\[\phi_n = \phi_{n-1} \odot p\] 
-\[I \models \phi_{n-1}\]
-\[I' \models \phi_{n-1}\]
+\[\phi_{(n+m)} = \phi_{n} \odot \psi_{m}\] 
 \[I \models \phi_{n}\]
-\[I' \llbracket p \rrbracket = 1 \]
+\[I' \models \phi_{n}\]
+\[I \models \phi_{n}\]
+\[I' \llbracket \psi_m \rrbracket = 1 \]
 
 Тогда возможны два случая:
 \begin{enumerate}
-    \item \(I \llbracket p \rrbracket = 1 \). 
+    \item \(I \llbracket \psi_m \rrbracket = 1 \). 
     Вместо \(\odot\) может стоять любой оператор: \(\lor\) или \(\land\).
-    Но т.к. \(I' \models \phi_{n-1}\) и \(I' \models p\), то независимо от оператора
-    верно \(I' \models \phi_{n}\).
+    Но т.к. \(I' \models \phi_{n}\) и \(I' \models \psi_m\), то независимо от оператора
+    верно \(I' \models \phi_{(n+m)}\).
 
-    \item \(I \llbracket p \rrbracket = 0 \). 
-    Т.к. \(I \models \phi_n\) мы можем исключить из рассмотрения оператор \(\land\).
-    А т.к. \(I' \models \phi_{n-1}\), то верно и 
-    \(I' \models \phi_{n-1} \lor p\) т.е. верно 
-    \(I' \models \phi_{n}\)
+    \item \(I \llbracket \psi_m \rrbracket = 0 \). 
+    Т.к. \(I \models \phi_{(n+m)}\) мы можем исключить из рассмотрения оператор \(\land\).
+    А т.к. \(I' \models \phi_{n}\), то верно и 
+    \(I' \models \phi_{n} \lor \psi_m\) т.е. верно 
+    \(I' \models \phi_{(n+m)}\)
 \end{enumerate}
 
 Ч.т.д.
