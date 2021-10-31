@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage[russian]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{bussproofs}
+
+\title{Доп. главы матлогики. ДЗ 2}
+\author{Седлярский Михаил Андреевич 21.М07-мм}
+\date{ }
+
+\setlength{\parindent}{0em}
+
+\begin{document}
+\maketitle
+
+\section*{Задание 1}
+Если \(T \cup U \models \bot\), то верно следующее утверждение: 
+\(T \models \neg U\).
+
+Согласно интерполяционной теореме Крейга есть такая формула \(\theta\), что
+\(T \models \theta\), \(\theta \models \neg U\) и 
+\(atoms(\theta) \subseteq atoms(T) \cap atoms(\neg U)\). 
+Т.к. \(\theta \models \neg U\), то справедливо и \(U \models \neg \theta\).
+В силу того, что \(\neg \theta \lor \neg U\) равносильно \(\neg U \lor \neg \theta\)
+
+Т.е. для таких множеств формул \(T \cup U \models \bot\) есть формула \(\theta\), что
+\(T \models \theta\), \(U \models \neg \theta\) 
+и \(atoms(\theta) \subseteq atoms(T) \cap atoms(U)\).
+
+
+\section*{Задание 2}
+
+
+\end{document}
