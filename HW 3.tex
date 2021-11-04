@@ -1,0 +1,133 @@
+\documentclass{article}
+
+\usepackage[russian]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{bussproofs}
+\usepackage{hyperref}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+
+\title{Доп. главы матлогики. ДЗ 3}
+\author{Седлярский Михаил Андреевич 21.М07-мм}
+\date{ }
+
+\setlength{\parindent}{0em}
+
+\begin{document}
+\maketitle
+
+\section*{Задание 1}
+Приведём формулу \(\neg(\neg(p \land q) \rightarrow \neg r)\) в КНФ с помощью преобразования Цейтина.
+Запишем формулу в каноничном виде: \(\neg((p \land q) \lor \neg r)\).
+
+Положим \(\Delta = \emptyset\).
+
+Начнём преобразование с самой внутренней подформулы: \(p \land q\).
+Левая и правая её части - проп.переменные, поэтому преобразование Цейтина
+над ними никак не  изменит наш аккумулятор.
+
+Введём новую переменную \(a_1\). Получаем: \(
+    \Delta = \{
+        \neg a_1 \lor p,
+        \neg a_1 \lor q,
+        \neg p \lor \neg q \lor a_1 
+    \}
+\)
+
+Затем поднимемся на уровень дизъюнкции и введём переменную \(a_2\).
+Получаем следующее множество: \(
+    \Delta = \{
+        \neg a_2 \lor a_1 \lor \neg r,
+        \neg a_1 \lor a_2,
+        r \lor a_2,
+        \neg a_1 \lor p,
+        \neg a_1 \lor q,
+        \neg p \lor \neg q \lor a_1 
+    \}
+\)
+
+На уровне отрицания добавляем отрицание \(a_2\). 
+В итоге получаем:
+\[
+    \neg a_2
+    \land  (\neg a_2 \lor a_1 \lor \neg r)
+    \land (\neg a_1 \lor a_2)
+    \land (r \lor a_2)
+    \land (\neg a_1 \lor p)
+    \land (\neg a_1 \lor q)
+    \land (\neg p \lor \neg q \lor a_1)
+\]
+
+\section*{Задание 2}
+Докажем корректность преобразования Цейтина. 
+Т.е. если формуле F соответствует F`, то они эквивыполнимы.
+
+Воспользуемся индукцией по построению формулы.
+
+База с проп. переменной.
+\((l \leftrightarrow p) \land l \models p\)
+Упростим выражение: \(l \land p \models p\). 
+Очевидно, что любая модель левой части является моделью правой.
+
+Переход.
+
+1) \((l \leftrightarrow \phi) \land \neg l \models \neg \phi\)
+Упростим выражение: \(\neg l \land \neg \phi \models \neg \phi\).
+Случай аналогичен предыдущему.
+
+2) Пусть \(\phi\) - функция, не содержащая в себе функции \(\psi\).
+
+\[(l \leftrightarrow \psi) \land (\phi \land l) \models \phi \land \psi\]
+\[(\phi \land l) \land (l \land \psi) \lor (\neg l \land \neg \psi) \land (\phi \land l) \models \phi \land \psi\]
+\[\phi \land \psi \models \phi \land \psi\]
+
+3) Пусть \(\phi\) - функция, не содержащая в себе функции \(\psi\).
+\[(l \leftrightarrow \psi) \land (\phi \lor l) \models \phi \lor \psi\]
+\[(\phi \lor l) \land (l \land \psi) \lor (\neg l \land \neg \psi) \land (\phi \lor l) \models \phi \lor \psi\]
+\[(l \land \psi) \lor (\neg l \land \neg \psi \land \phi) \models \phi \lor \psi\]
+Левое выражение верно если \(M\llbracket \psi \rrbracket = 1\) либо \(M\llbracket \phi \rrbracket = 1\). 
+В обоих случаях будет выполняться \(\phi \lor \psi\). 
+
+Ч.т.д.
+
+\section*{Задание 3}
+\url{https://github.com/MihailITPlace/acmlat-3hw-3-problem}
+
+\section*{Задание 4}
+\url{https://github.com/MihailITPlace/acmlat-3hw-4-problem}
+
+\section*{Задание 5}
+Запишем формулу в виду множества дизъюнктов.
+\[p \lor q \lor r\]
+\[\neg p \lor \neg q \lor \neg r\]
+\[\neg p \lor q \lor r\]
+\[\neg q \lor r\]
+\[q \lor \neg r\]
+
+Допустим \(M(q) = 1\). Получаем:
+\[\textcolor{green}{p \lor q \lor r}\]
+\[\neg p \lor \textcolor{red}{\neg q} \lor \neg r\]
+\[\textcolor{green}{\neg p \lor q \lor r}\]
+\[\textcolor{red}{\neg q} \lor r\]
+\[\textcolor{green}{q \lor \neg r}\]
+
+Допустим \(M(r) = 1\). Получаем:
+\[\textcolor{green}{p \lor q \lor r}\]
+\[\neg p \lor \textcolor{red}{\neg q} \lor \textcolor{red}{\neg r}\]
+\[\textcolor{green}{\neg p \lor q \lor r}\]
+\[\textcolor{red}{\neg q} \lor \textcolor{green}{r}\]
+\[\textcolor{green}{q \lor \neg r}\]
+
+Допустим \(M(p) = 0\). Получаем:
+\[\textcolor{green}{p \lor q \lor r}\]
+\[\textcolor{green}{\neg p} \lor \textcolor{red}{\neg q} \lor \textcolor{red}{\neg r}\]
+\[\textcolor{green}{\neg p \lor q \lor r}\]
+\[\textcolor{red}{\neg q} \lor \textcolor{green}{r}\]
+\[\textcolor{green}{q \lor \neg r}\]
+
+Множество всех дизъюнктов пусто, итоговая модель: 
+\(M[q \mapsto 1, r \mapsto 1, p \mapsto 0]\)
+\end{document}
