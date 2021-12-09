@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage[russian]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{bussproofs}
+\usepackage{hyperref}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+
+\title{Доп. главы матлогики. ДЗ 7}
+\author{Седлярский Михаил Андреевич 21.М07-мм}
+\date{ }
+
+\setlength{\parindent}{0em}
+
+\begin{document}
+\maketitle
+
+\section*{Задание 1}
+Записать высказывания на языке первого порядка
+\begin{enumerate}
+    \item 
+        \(\forall x, y: (coauthors(x, y) \iff \exists p : author(x, p) \land author(y, p))\)
+    \item 
+        \(\exists x: researcher(x) \land (\forall p: author(x, p) \rightarrow \exists y : researcher(y) \land author(y, p) \land \neg(x = y))\)
+    \item 
+        \(\forall x, y: coauthors(x, y) \rightarrow \neg (\exists p: author(x, p) \land reviewer(y, p))\)
+    \item 
+        \(\forall x \exists y: researcher(x) \land (tutor(x) = y) \land coauthors(x, y)\)
+\end{enumerate}
+
+\section*{Задание 2}
+Истинны ли следующие формулы в структуре M при оценке v?
+\begin{enumerate}
+    \item 
+        \( p(x,y) \rightarrow (\forall z \exists w : q(z, f(w))) \)
+
+        Ложь в структуре M при оценке v т.к. при \(z \mapsto \star\) будет ложным выражение \(q(\star, f(w))\)
+    \item 
+        \( p(x,y) \rightarrow (\exists z \exists w : q(z, w)) \)
+
+        Заменим свободные переменные согласно оценке из задания.
+        \[ p(\star,\circ) \rightarrow (\exists z \exists w : q(z, w)) \]
+        \[ \top \rightarrow (\exists z \exists w : q(z, w)) \]
+        Допустим, что \(z \mapsto \circ w \mapsto \circ\) при которых \(q(z, w)\) выполнима.
+        Следовательно, исходная формула истинна в структуре M при оценке v.
+    \item 
+        \(\forall x \exists y : ((p(x,y) \land q(y,x)) \rightarrow p(y,x))\)
+
+        Допустим, что \(x \mapsto \circ\). 
+
+        Тогда получаем: \(\exists y : ((p(\circ,y) \land q(y,\circ)) \rightarrow p(y,\circ))\).
+        Допустим \(y \mapsto \circ\). Получаем \((\bot \land \top) \rightarrow \bot\) т.е. частный случай истинный.
+        
+        Допустим, что \(x \mapsto \star\). 
+
+        Тогда получаем: \(\exists y : ((p(\star,y) \land q(y,\star)) \rightarrow p(y,\star))\).
+        Допустим \(y \mapsto \star\). Получаем \((\bot \land \bot) \rightarrow \bot\) т.е. частный случай истинный.
+
+        Следовательно, исходная формула истинна в структуре M при оценке v.
+\end{enumerate}
+
+\section*{Задание 3}
+\begin{enumerate}
+    \item 
+        \(\exists x : (p(x) \lor q(x)) \leftrightarrow (\exists x : p(x)) \lor (\exists x : q(x))\)
+        
+        По правилам интерпретации формул логики первого порядка получаем:
+
+        \(
+            M \models_v \exists x : (p(x) \lor q(x)) \leftrightarrow
+            M \models_{v[x \mapsto a]} p(x)
+        \) или \(M \models_{v[x \mapsto a]} q(x)\)
+
+        Очевидно, что независимо от структуры M левая часть выполняется только 
+        тогда и только тогда, когда выполняется хотя бы одна из правых формул.
+    \item 
+        \(
+            (\forall x \forall y : (p(x,y) \rightarrow p(y,x)))
+            \rightarrow \forall z : p(z,z)
+        \)
+        Допустим, что на носителе структуры M заданы отношения симметрии и рефлексии.
+        Тогда исходная формула выполнима независимо от оценки.
+
+        Очевидно, что упомянутые отношения могут быть не заданы и тогда формула не будет выполняться.
+        Следовательно, исходное предложение выполнимо, но не общезначимо.
+
+        Например, невыполнимое в структуре \(M\) такой, что:
+
+            \(|M| = \{1, 2\}\)
+
+            \(M(p) = \{<1,2>, <2,1>\}\)
+
+            \(ar = \{p \mapsto 2\}\)
+
+            \(M(f) = \emptyset\)
+    \item 
+        \(
+            (\forall x : (\neg p(x) \lor \neg q(x))) 
+            \leftrightarrow (\neg \forall x : (p(x) \land q(x)))
+        \)
+
+        Раскроем отрицание правой части. Получаем:
+
+        \(
+            (\forall x : (\neg p(x) \lor \neg q(x))) 
+            \leftrightarrow (\exists x : (\neg p(x) \lor \neg q(x)))
+        \)
+
+        Это точно выполняется в структуре, в носителе которой, всего один элемент. 
+        Но может не выполняться в других структурах. Следовательно, предложение выполнимо, но не общезначимою
+    \item 
+        \(\exists y \forall x : p(y, x) \land \exists x \forall y : \neg p(y, x)\)
+        
+        Переименуем переменные для удобства:
+
+        \(\exists y \forall x : p(y, x) \land \exists z \forall u : \neg p(u, z)\)
+
+        Левая часть выражения утверждает, что в множестве \(M(p)\) существует такой \(y\), 
+        входящий в пару со всеми возможными значениями из носителя. 
+        Правая часть утверждает, что можно найти такой \(z\), 
+        который вообще не встречается во множестве пар \(M(p)\).
+
+        Противоречие. Следовательно, предложение невыполнимое.
+\end{enumerate}
+
+\section*{Задание 4}
+\section*{Задание 5}
+Пусть \(\Sigma^{Gr}_f = \{\cdot, ^{-1}\}\)
+
+Пусть \(\Gamma = \{\)
+    \[\forall x, y : (x \cdot y = y \land y \cdot x = y) \rightarrow (x = y \cdot y^{-1} \land x = y^{-1} \cdot y)\]
+    \[\forall x, y, z: (x \cdot y) \cdot z = x \cdot (y \cdot z)\]
+\(\}\)
+\end{document}
